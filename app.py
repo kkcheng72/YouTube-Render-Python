@@ -1,14 +1,21 @@
 from flask import Flask
+import uvicorn
+from fastapi import FastAPI
+from BankNotes import BankNote
+import numpy as np
+import pickle
+import pandas as pd
 
 app = Flask(__name__)
 
-# @app.route('/')
-# def hello_world():
-#     return 'Hello Hello'
-
+@app.get('/{name}')
 @app.get('/')
-def index():
-    return{'message': 'Hello, World!'}
+def get_name(name: str = None):
+    if name:
+        return {'Welcome': f'{name}'}
+    else:
+        return {'message': 'Hello, 9999!'}
+
 
 if __name__ == '__main__':
     app.run()
